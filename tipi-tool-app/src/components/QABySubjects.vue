@@ -1,20 +1,20 @@
 <template>
-<div class="container">
+<div class="container">  
     <div class="panel-group" id="accordion">
         <div v-for="(qa, subject, i) in qaTabs" :key="i">
           <div class="faqHeader">{{subject}}</div>
-          <div v-for="(answer, question, j) in qa" :key="j" class="panel panel-default">
-              <div class="panel-heading">
-                  <h4 class="panel-title">
-                      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" :href="'#collapse' + j">{{question}} </a>
-                  </h4>
-              </div>
-              <div :id="'#collapse' + j" class="panel-collapse collapse in">
-                  <div class="panel-body">
-                      {{answer}} 
-                  </div>
-              </div>
-          </div>    
+            <div v-for="(answer, question, j) in qa" :key="j" class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" :href="'#collapse' + i + j">{{question}} </a>
+                    </h4>
+                </div>
+                <div :id="'collapse' + i + j" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {{answer}} 
+                    </div>
+                </div>
+            </div>    
           <br>      
         </div>
     </div>
