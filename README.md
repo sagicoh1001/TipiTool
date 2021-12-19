@@ -1,3 +1,3 @@
 # TipiTool
 
-## created and developed by Sagi Cohen, Uri Elimelech, Shiraz Yaacob, Daba Kantorovich, Liad Rozenzveig
+## created and developed by Sagi Cohen, Uri Elimelech, Shiraz Yaacob, Dana Kantorovich, Liad Rozenzveig
