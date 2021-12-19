@@ -1,17 +1,17 @@
 <template>
 <div class="container">  
     <div class="panel-group" id="accordion">
-        <div v-for="(qa, subject, i) in qaTabs" :key="i">
+        <div v-for="(qa, subject, i) in qaSubjects" :key="i">
           <div class="faqHeader">{{subject}}</div>
-            <div v-for="(answer, question, j) in qa" :key="j" class="panel panel-default">
+            <div v-for="(qaData, j) in qa" :key="j" class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" :href="'#collapse' + i + j">{{question}} </a>
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" :href="'#collapse' + i + j">{{qaData.question}} </a>
                     </h4>
                 </div>
                 <div :id="'collapse' + i + j" class="panel-collapse collapse">
                     <div class="panel-body">
-                        {{answer}} 
+                        {{qaData.answer}} 
                     </div>
                 </div>
             </div>    
@@ -22,11 +22,15 @@
 </template>
 
 <script>
+
+import getAllDocuments from '../services/getAllQuestions'
+import _ from 'lodash';
+
 export default {
   name: 'QABySubjects',
   data() {
     return {
-      qaTabs: {
+      qaSubjects: {
         'Time Table': {
           'When do we start?': '5am',
           'when do we go home?': "we don't",
@@ -38,6 +42,13 @@ export default {
       },
     };
   },
+  async mounted()
+  {
+    const allData = await getAllDocuments();
+    const grouped = _(allData).filter(object => _.has(object,  "category")).groupBy(item => _.get(item, 'category', 'Misc')).value();
+    console.log(grouped);
+    this.qaSubjects = grouped;
+  }
 };
 </script>
 
