@@ -6,7 +6,7 @@
             <div v-for="(answer, question, j) in qa" :key="j" class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" :href="'#collapse' + i + j">{{question}} </a>
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" :href="'#collapse' + i + j">{{question}} </a>
                     </h4>
                 </div>
                 <div :id="'collapse' + i + j" class="panel-collapse collapse">
